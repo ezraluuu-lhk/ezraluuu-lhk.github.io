@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ezra Lu · LLM 工程师</title>
-  <meta name="description" content="Ezra Lu – 专注大语言模型系统、统计建模与高性能计算的工程师。">
+  <title>Ezra Lu · LLM-Focused Engineer</title>
+  <meta name="description" content="Ezra Lu – AI engineer focused on LLM agent systems, statistical modeling, and high-performance compute.">
   <style>
     :root {
       color-scheme: light dark;
@@ -229,45 +229,45 @@
   </style>
 </head>
 <body>
-  <nav class="language-switch" aria-label="语言切换">
-    <span lang="zh-Hans" aria-current="page">中文</span>
-    <a href="index-en.html" lang="en">English</a>
+  <nav class="language-switch" aria-label="Language switcher">
+    <a href="index.html" lang="zh-Hans">中文</a>
+    <span aria-current="page">English</span>
   </nav>
   <main>
     <header class="hero">
-      <h1>路海阔 Ezra</h1>
+      <h1>Hai Kuo (Ezra) Lu</h1>
       <p>
-        具备统计建模与系统优化双重背景，专注 AI 算法实现与大模型工程应用。 熟悉非线性模型、Agent 框架、文档解析等场景，擅长用 C++/Python 构建高性能系统并推动实际落地。
+        Applied AI engineer focused on statistical modeling, large-model deployment, and high-performance systems. Experienced in nonlinear models, agent frameworks, and document parsing with C++/Python implementations.
       </p>
       <div class="cta">
-        <a class="btn primary" href="resume/resume_cn.pdf" target="_blank" rel="noopener">中文简历</a>
-        <a class="btn secondary" href="resume/resume_en.pdf" target="_blank" rel="noopener">English Résumé</a>
-        <a class="btn secondary" href="#notes">最新笔记</a>
+        <a class="btn primary" href="resume/resume_en.pdf" target="_blank" rel="noopener">English Résumé</a>
+        <a class="btn secondary" href="resume/resume_cn.pdf" target="_blank" rel="noopener">中文简历</a>
+        <a class="btn secondary" href="#notes">Latest Notes</a>
       </div>
     </header>
 
     <section id="profile">
-      <h2>教育与职业概览</h2>
-      <p class="lead">波士顿大学统计学硕士，兼具统计建模与系统优化背景，目前在博佳医药科技推动 NLME 算法与高性能实现，曾在浙江来未来科技主导医疗 AI 项目落地。</p>
+      <h2>Education &amp; Career Snapshot</h2>
+      <p class="lead">Boston University M.A. in Statistics with a dual focus on modeling and systems optimization. Currently advancing NLME algorithms and high-performance tooling at Bojia Pharmaceutical Technology after leading hospital AI delivery at Zhejiang LaiFuture Technology.</p>
       <ul>
-        <li>波士顿大学统计学硕士（2018–2020），专注统计学习与计算统计。</li>
-        <li>北京理工大学统计学学士（2014–2018），夯实概率与数理基础。</li>
-        <li>现任博佳医药科技算法研究员，负责前沿 NLME 算法与性能优化。</li>
-        <li>曾任浙江来未来科技数据科学家，构建医疗 AI 数据与模型流水线。</li>
+        <li>Master of Arts in Statistics, Boston University (2018–2020) emphasizing statistical learning and computation.</li>
+        <li>Bachelor of Science in Statistics, Beijing Institute of Technology (2014–2018) with rigorous probability and analysis training.</li>
+        <li>Mid-level Algorithm Researcher at Bojia Pharmaceutical Technology, owning frontier NLME implementations and performance optimization.</li>
+        <li>Former Data Scientist at Zhejiang LaiFuture Technology, building end-to-end medical AI data and modeling pipelines.</li>
       </ul>
     </section>
 
     <section id="notes">
-      <h2>现场笔记</h2>
-      <p class="lead">记录正在进行的 LLM 实验与基础设施探索。把任意 <code>.md</code> 文件放到 <code>/notes</code> 目录，内容就会显示在这里。</p>
+      <h2>Field Notes</h2>
+      <p class="lead">Quick drops from ongoing LLM experiments and infra learnings. Add any <code>.md</code> file to <code>/notes</code> and it will appear below.</p>
       <ul id="notes-list">
-        <li id="notes-loading">正在加载笔记…</li>
+        <li id="notes-loading">Loading notes…</li>
       </ul>
     </section>
   </main>
 
   <footer>
-    使用原生 HTML/CSS 与少量 JS 构建。PDF 简历由 GitHub Actions 从 \LaTeX{} 源文件自动生成，保持与仓库内容同步。
+    Built with vanilla HTML/CSS + a sprinkle of JS. PDFs are generated from \LaTeX{} via GitHub Actions, so they stay in sync with the TeX sources.
   </footer>
 
   <script>
@@ -300,7 +300,7 @@
       notesListEl.innerHTML = '';
       if (!files.length) {
         const emptyItem = document.createElement('li');
-        emptyItem.textContent = '把 markdown 文件放进 notes/ 文件夹后会显示在这里。';
+        emptyItem.textContent = 'Drop markdown files into the notes/ folder to see them here.';
         notesListEl.appendChild(emptyItem);
         return;
       }
@@ -343,7 +343,7 @@
         }
         notesListEl.innerHTML = '';
         const fallback = document.createElement('li');
-        fallback.textContent = '暂时无法访问 GitHub，notes/ 目录里可查看所有笔记。';
+        fallback.textContent = 'Unable to reach GitHub right now. Notes live in /notes on the repo.';
         notesListEl.appendChild(fallback);
       }
     }
