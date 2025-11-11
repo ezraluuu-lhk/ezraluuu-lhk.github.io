@@ -1,0 +1,46 @@
+name: Build résumés
+
+on:
+  push:
+    paths:
+      - 'resume/*.tex'
+      - '.github/workflows/build-resumes.yml'
+  pull_request:
+    paths:
+      - 'resume/*.tex'
+      - '.github/workflows/build-resumes.yml'
+  workflow_dispatch:
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Sync landing page descriptions
+        run: |
+          python scripts/update_descriptions.py
+          if ! git diff --quiet -- index.html index-zh.html; then
+            echo "::error::Landing page descriptions out of sync. Run 'python scripts/update_descriptions.py' locally and commit the updated HTML files."
+            git --no-pager diff -- index.html index-zh.html
+            exit 1
+          fi
+
+      - name: Compile English résumé
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume/resume_en.tex
+
+      - name: Compile Chinese résumé
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume/resume_cn.tex
+
+      - name: Upload PDFs
+        uses: actions/upload-artifact@v4
+        with:
+          name: resumes
+          path: |
+            resume/resume_en.pdf
+            resume/resume_cn.pdf

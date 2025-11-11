@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ezra Lu · LLM 工程师</title>
+  <meta name="description" content="Ezra Lu – 专注大语言模型系统、统计建模与高性能计算的工程师。">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #0f172a;
+      --bg-alt: rgba(15, 23, 42, 0.85);
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-strong: #0ea5e9;
+      --card-bg: rgba(15, 23, 42, 0.65);
+      --card-border: rgba(148, 163, 184, 0.25);
+      font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.15), transparent 40%),
+                  radial-gradient(circle at 20% 80%, rgba(14, 165, 233, 0.12), transparent 55%),
+                  var(--bg);
+      color: var(--text);
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    .language-switch {
+      width: min(960px, calc(100% - 3rem));
+      margin: 1.75rem auto 0;
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    .language-switch span {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .language-switch a {
+      color: var(--muted);
+      text-decoration: none;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 0.35rem 0.9rem;
+      transition: border 0.2s ease, color 0.2s ease;
+    }
+
+    .language-switch a:hover,
+    .language-switch a:focus {
+      color: var(--text);
+      border-color: rgba(148, 163, 184, 0.4);
+      outline: none;
+    }
+
+    main {
+      flex: 1;
+      width: min(960px, calc(100% - 3rem));
+      margin: 0 auto;
+      padding: 3rem 0 4rem;
+    }
+
+    header.hero {
+      padding: 3.5rem clamp(1.5rem, 5vw, 3rem);
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 25px 80px rgba(15, 23, 42, 0.45);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.25rem, 5vw, 3.25rem);
+      margin: 0;
+      letter-spacing: -0.03em;
+    }
+
+    .hero p {
+      margin: 1rem 0 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      max-width: 52ch;
+    }
+
+    .cta {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.85rem 1.6rem;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #0b1120;
+      box-shadow: 0 12px 30px rgba(56, 189, 248, 0.35);
+    }
+
+    .btn.secondary {
+      border-color: rgba(148, 163, 184, 0.35);
+      background: rgba(15, 23, 42, 0.45);
+      color: var(--text);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(56, 189, 248, 0.35);
+    }
+
+    section {
+      margin-top: 3.5rem;
+      padding: clamp(1.75rem, 4vw, 2.5rem);
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 18px 60px rgba(15, 23, 42, 0.35);
+    }
+
+    section h2 {
+      margin: 0;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      letter-spacing: -0.02em;
+    }
+
+    section p.lead {
+      color: var(--muted);
+      margin-top: 0.75rem;
+      max-width: 70ch;
+      line-height: 1.6;
+    }
+
+    #notes-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem 0 0;
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    #notes-list li {
+      padding: 0.85rem 1rem;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      transition: border 0.2s ease, transform 0.2s ease;
+    }
+
+    #notes-list li:hover {
+      border-color: rgba(56, 189, 248, 0.6);
+      transform: translateX(4px);
+    }
+
+    #notes-list a {
+      color: inherit;
+      text-decoration: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .note-meta {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    footer {
+      padding: 2rem 0 3rem;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 640px) {
+      main {
+        width: calc(100% - 2.5rem);
+        padding-top: 2.5rem;
+      }
+
+      .language-switch {
+        width: calc(100% - 2.5rem);
+        justify-content: center;
+      }
+
+      header.hero {
+        padding: 2.5rem 1.75rem;
+      }
+
+      .cta {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="language-switch" aria-label="语言切换">
+    <a href="index.html" lang="en">English</a>
+    <span lang="zh-Hans" aria-current="page">中文</span>
+  </nav>
+  <main>
+    <header class="hero">
+      <h1>专注打造可落地的 LLM 系统。</h1>
+      <p>
+        具备统计建模与系统优化双重背景，专注 AI 算法实现与大模型工程应用。 熟悉非线性模型、Agent 框架、文档解析等场景，擅长用 C++/Python 构建高性能系统并推动实际落地。
+      </p>
+      <div class="cta">
+        <a class="btn primary" href="resume/resume_cn.pdf" target="_blank" rel="noopener">中文简历</a>
+        <a class="btn secondary" href="resume/resume_en.pdf" target="_blank" rel="noopener">English Résumé</a>
+        <a class="btn secondary" href="#notes">最新笔记</a>
+      </div>
+    </header>
+
+    <section id="notes">
+      <h2>现场笔记</h2>
+      <p class="lead">记录正在进行的 LLM 实验与基础设施探索。把任意 <code>.md</code> 文件放到 <code>/notes</code> 目录，内容就会显示在这里。</p>
+      <ul id="notes-list">
+        <li id="notes-loading">正在加载笔记…</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    使用原生 HTML/CSS 与少量 JS 构建。PDF 简历由 GitHub Actions 从 \LaTeX{} 源文件自动生成，保持与仓库内容同步。
+  </footer>
+
+  <script>
+    const notesListEl = document.getElementById('notes-list');
+    const loadingEl = document.getElementById('notes-loading');
+
+    const REPO_OWNER = 'ezraluuu';
+    const REPO_NAME = 'ezraluuu.github.io';
+    const NOTES_DIR = 'notes';
+
+    function formatTitle(filename) {
+      const base = filename.replace(/\.md$/i, '');
+      const parts = base.split(/[-_]/).filter(Boolean);
+      if (parts.length <= 1) {
+        return base.replace(/-/g, ' ');
+      }
+      const datePart = parts.slice(0, 3).join('-');
+      const titlePart = parts.slice(3).join(' ');
+      return `${titlePart ? titlePart.replace(/\b\w/g, ch => ch.toUpperCase()) : base} (${datePart})`;
+    }
+
+    function formatDateFromName(filename) {
+      const match = filename.match(/^(\d{4})[-_]?(\d{2})[-_]?(\d{2})/);
+      if (!match) return '';
+      const [, y, m, d] = match;
+      return `${y}-${m}-${d}`;
+    }
+
+    function renderNotes(files) {
+      notesListEl.innerHTML = '';
+      if (!files.length) {
+        const emptyItem = document.createElement('li');
+        emptyItem.textContent = '把 markdown 文件放进 notes/ 文件夹后会显示在这里。';
+        notesListEl.appendChild(emptyItem);
+        return;
+      }
+      files.forEach(file => {
+        const item = document.createElement('li');
+        const link = document.createElement('a');
+        link.href = `${NOTES_DIR}/${file.name}`;
+        link.target = '_blank';
+        link.rel = 'noopener';
+        link.textContent = formatTitle(file.name);
+
+        const meta = document.createElement('span');
+        meta.className = 'note-meta';
+        const dated = formatDateFromName(file.name);
+        meta.textContent = dated;
+
+        if (dated) {
+          link.appendChild(meta);
+        }
+
+        item.appendChild(link);
+        notesListEl.appendChild(item);
+      });
+    }
+
+    async function fetchNotes() {
+      try {
+        const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${NOTES_DIR}`);
+        if (!response.ok) {
+          throw new Error(`GitHub API responded with ${response.status}`);
+        }
+        const data = await response.json();
+        const markdownFiles = data.filter(entry => entry.type === 'file' && entry.name.endsWith('.md'));
+        markdownFiles.sort((a, b) => (a.name < b.name ? 1 : -1));
+        renderNotes(markdownFiles);
+      } catch (error) {
+        console.error('Failed to load notes', error);
+        if (loadingEl) {
+          loadingEl.remove();
+        }
+        notesListEl.innerHTML = '';
+        const fallback = document.createElement('li');
+        fallback.textContent = '暂时无法访问 GitHub，notes/ 目录里可查看所有笔记。';
+        notesListEl.appendChild(fallback);
+      }
+    }
+
+    fetchNotes();
+  </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{mathptmx}
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{multicol}
+
+% Page setup
+\geometry{
+    left=1.5cm,
+    right=1.5cm,
+    top=1.5cm,
+    bottom=1.5cm
+}
+\pagestyle{empty}
+
+% Minimal spacing
+\setstretch{1.0}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.1em}  % Very small paragraph spacing
+% Compact section formatting
+\titlespacing*{\section}{0pt}{0.4em}{0.2em}
+% Section formatting
+\titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+\titleformat{\subsection}{\normalsize\bfseries}{}{0em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{}{0em}{}
+
+\setlist[itemize]{leftmargin=1em, itemsep=0pt, topsep=0pt}
+
+\begin{document}
+
+% Header
+\begin{center}
+    {\LARGE \textbf{Hai Kuo (Ezra) Lu}}\\[0.5em]
+    Applied AI engineer focused on statistical modeling, large-model deployment, and high-performance systems.\\
+    Experienced in nonlinear models, agent frameworks, and document parsing with C++/Python implementations.\\[0.5em]
+    \rule{\textwidth}{0.4pt}
+\end{center}
+
+\begin{multicols}{2}
+
+\section{Education}
+
+\subsection{Boston University}
+\textbf{Master of Arts in Statistics} \hfill Boston, MA\\
+College of Math and Statistics \hfill GPA: 3.58/4.0\\
+\textit{2018.09 -- 2020.01}
+\begin{itemize}[leftmargin=1em, itemsep=0pt]
+    \item Core Coursework: Statistical Learning, General Linear Regression, Bayesian Statistics, Computational Statistics, Stochastic Process
+\end{itemize}
+
+\subsection{Beijing Institute of Technology}
+\textbf{Bachelor of Science in Statistics} \hfill Beijing, China\\
+School of Mathematics and Statistics \hfill GPA 3.3/4.0\\
+\textit{2014.09 -- 2018.06}
+\begin{itemize}[leftmargin=1em, itemsep=0pt]
+    \item Core Coursework: Mathematical Analysis, Advanced Algebra, Real Analysis, Probability Theory, Mathematical Statistics, C Programming
+\end{itemize}
+
+\section{Work Experience}
+
+\subsection{Bojia Pharmaceutical Technology Co., Ltd.}
+\textbf{Mid-level Algorithm Researcher} \hfill Shanghai \hfill 2023.08 -- Present
+\begin{itemize}[leftmargin=1em, itemsep=0pt]
+    \item Reproduced cutting-edge NLME algorithms (paper $\rightarrow$ Python demo $\rightarrow$ C++) with parity against industry standards.
+    \item Designed test suites and simulation pipelines to validate algorithm accuracy across dosing regimens and PK/PD structures.
+    \item Optimized performance by eliminating redundant computations and replacing Eigen routines with BLAS/LAPACK, achieving 70\%+ speedups.
+\end{itemize}
+
+\subsection{Zhejiang LaiFuture Technology Co., Ltd.}
+\textbf{Data Scientist, Intelligent Data Department} \hfill 2021.07 -- 2023.08
+\begin{itemize}[leftmargin=1em, itemsep=0pt]
+    \item Led healthcare AI collaborations, covering data collection, model development, and deployment for hospital research needs.
+    \item Built automated data ingestion/cleaning pipelines tailored to heterogeneous hospital information systems and formats.
+    \item Processed multimodal medical data (signals, imaging) using ResNet and CNN architectures to deliver robust feature extraction.
+\end{itemize}
+
+\section{Projects}
+
+\subsection{FOCE and SAEM Algorithm Suite}
+\begin{itemize}[leftmargin=1em, itemsep=0pt]
+    \item Implemented FOCEI and SAEM NLME parameter estimation algorithms from scratch, including Hessian approximations and optimizer integration.
+    \item Accelerated gradient computations via analytic/numeric hybrid strategies, reducing iteration time by \textasciitilde{}30\%.
+    \item Engineered reusable matrix/tensor structures with memory pooling to remove Eigen allocation bottlenecks in large simulation workloads.
+    \item Benchmarked outputs against NONMEM/Monolix across diverse model structures to ensure precision and robustness.
+\end{itemize}
+
+\subsection{LLM-Powered PDF Structuring and Auto-labeling}
+\begin{itemize}[leftmargin=1em, itemsep=0pt]
+    \item Designed an end-to-end pipeline that converts PDF documents into normalized JSON layouts before LLM processing.
+    \item Integrated private deployments of Dolphin and DeepSeek-R1 for entity extraction, prompt orchestration, and agent-style workflows.
+    \item Delivered a production system that dramatically reduced manual labeling time while improving accuracy for clinical statistics teams.
+\end{itemize}
+
+\section{Skills}
+\begin{itemize}[leftmargin=1em, itemsep=0pt]
+    \item \textbf{Languages}: Python, C++, R, Bash, SQL
+    \item \textbf{Frameworks}: PyTorch, NumPy, Pandas, Polars, Scikit-learn, Eigen, SymPy, OpenBLAS/LAPACK
+    \item \textbf{Modeling}: FOCEI, SAEM, Bootstrap, NLME, Bayesian Inference
+    \item \textbf{Publications}: PAGE 31 (2023) Abstract 10676 \href{https://www.page-meeting.org/?abstract=10676}{www.page-meeting.org/?abstract=10676}
+    \item \textbf{Languages}: Native Chinese, Fluent English (TOEFL 110)
+\end{itemize}
+
+\end{multicols}
+
+\end{document}
